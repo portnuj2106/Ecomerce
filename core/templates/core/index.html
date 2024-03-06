@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+   <h2 class="mb-12 text-2xl text-center">Products</h2>
+   <div class="grid grid-cols-3 gap-3">
+      {% for product in products %}
+      <div>
+         <div class="p-6 bg-white rounded-b-xl">
+            <!-- <a href="{% url 'product:detail' product.id %}"> -->
+            <h2 class="text-2xl">{{ product.name }}</h2>
+            <p class="text-gray-500">Price: {{ product.price }}</p>
+            <p class=" mb-10 text-gray-500">Description: {{ product.description }}</p>
+            </a>
+            <a href="#" hx-get="{% url 'add_to_order' product.id %}" hx-target="#menu_order_button" hx-swap="outerHTML"
+               class="px-6 py-3 text-lg font-semibold bg-yellow-500 text-white rounded-xl ">Order</a>
+         </div>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+{% endblock %}

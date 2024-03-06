@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+   <h2 class="mb-12 text-2xl text-center">My Orders</h2>
+
+   <div class="grid grid-cols-3 gap-3">
+      {% for item in order %}
+      {% include 'order/partials/order_item.html' %}
+      {% endfor %}
+
+   </div>
+
+   <h3 class="mb-12 text-2xl text-center mt-10">Total cost:{{ order.get_total_cost }}</h3>
+   <a href="{% url 'checkout_page' %}" class="btn btn-primary btn-lg btn-block">Order Now</a>
+</div>
+<h1>niggasinparis</h1>
+{% endblock %}
